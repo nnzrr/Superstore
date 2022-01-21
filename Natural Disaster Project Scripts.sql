@@ -59,8 +59,19 @@ SELECT 	gdp.entity AS entity, gdp.year AS year,
 					
 					
 --add new data set "worldpopulation" to database
+SELECT * FROM public.natdisasterdeath
+
 --world population with ten years frequency
 SELECT * FROM public.worldpopulation
 	WHERE year < 2010 AND year > 1950
 		GROUP BY entity, code, year, population
 		HAVING mod(year, 10) = 0
+		
+--looking at the difference over 10 years population growth in Indonesia, Malaysia, and Singapore
+SELECT entity, code, year, population, 
+((population - lead(population) OVER (PARTITION BY code ORDER BY year desc))) AS differenceOver10years
+	FROM public.worldpopulation 
+	WHERE code IN ('IDN', 'MYS', 'SGP') AND year >= 1960 and year <= 2010
+		GROUP BY entity, code, year, population
+		HAVING MOD(year, 10) = 0
+		ORDER BY code, year ASC
