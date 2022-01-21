@@ -46,7 +46,7 @@ FROM public.natdisasterdeath
 	GROUP BY entity
 	
 --looking at 2000's total death, GDP damaged, in Indonesia 
-SELECT 	gdp.entity, gdp.year, 
+SELECT 	gdp.entity AS entity, gdp.year AS year, 
 		GREATEST(0, SUM( deaths_temperature + deaths_wildfire + deaths_storm +
     	deaths_landslide + deaths_mass_movement + deaths_volcanic +
  		deaths_earthquake + deaths_flood + deaths_drought )) AS total_death, 
