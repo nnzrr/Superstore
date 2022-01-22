@@ -69,7 +69,7 @@ SELECT * FROM public.worldpopulation
 		
 --looking at the difference over 10 years population growth in Indonesia, Malaysia, and Singapore
 SELECT entity, code, year, population, 
-((population - lead(population) OVER (PARTITION BY code ORDER BY year desc))) AS differenceOver10years
+((population - LEAD(population) OVER (PARTITION BY code ORDER BY year desc))) AS differenceOver10years
 	FROM public.worldpopulation 
 	WHERE code IN ('IDN', 'MYS', 'SGP') AND year >= 1960 and year <= 2010
 		GROUP BY entity, code, year, population
