@@ -75,3 +75,14 @@ SELECT entity, code, year, population,
 		GROUP BY entity, code, year, population
 		HAVING MOD(year, 10) = 0
 		ORDER BY code, year ASC
+
+--Create TEMP TABLE "ASEAN_naturaldisaster", temp table rarely use in POSTGRESQL because there is better way
+SELECT pop.entity AS entity, pop.code AS code, dea.year AS year,
+pop.population as population, dea.deaths_temperature AS deaths_temperature, dea.deaths_wildfire AS deaths_wildfire, 
+dea.deaths_storm AS deaths_storm, dea.deaths_landslide AS deaths_landslide, dea.deaths_drought AS deaths_drought, 
+dea.deaths_flood AS deaths_flood, dea.deaths_earthquake AS deaths_earthquake,
+dea.deaths_volcanic AS deaths_volcanic, dea.deaths_mass_movement AS deaths_mass_movement
+INTO TEMP TABLE ASEAN_naturaldisaster
+	FROM natdisasterdeath dea
+	INNER JOIN worldpopulation pop
+	ON pop.code = dea.code
