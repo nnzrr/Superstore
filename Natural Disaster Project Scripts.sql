@@ -63,7 +63,7 @@ SELECT * FROM public.natdisasterdeath
 
 --world population with ten years frequency
 SELECT * FROM public.worldpopulation
-	WHERE year < 2010 AND year > 1950
+	WHERE year <= 2010 AND year >= 1950
 		GROUP BY entity, code, year, population
 		HAVING mod(year, 10) = 0
 		
