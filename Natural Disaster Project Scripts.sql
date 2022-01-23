@@ -82,7 +82,8 @@ pop.population as population, dea.deaths_temperature AS deaths_temperature, dea.
 dea.deaths_storm AS deaths_storm, dea.deaths_landslide AS deaths_landslide, dea.deaths_drought AS deaths_drought, 
 dea.deaths_flood AS deaths_flood, dea.deaths_earthquake AS deaths_earthquake,
 dea.deaths_volcanic AS deaths_volcanic, dea.deaths_mass_movement AS deaths_mass_movement
-INTO TEMP TABLE ASEAN_naturaldisaster
+INTO TEMP TABLE asean_naturaldisaster
 	FROM natdisasterdeath dea
 	INNER JOIN worldpopulation pop
 	ON pop.code = dea.code
+	WHERE pop.code IN ('KHM','IDN','LAO','MYS','MMR','PHL','SGP','THA','VNM')
