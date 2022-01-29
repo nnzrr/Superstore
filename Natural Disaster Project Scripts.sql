@@ -4,6 +4,8 @@ SELECT * FROM public.natdisasterdeath
 
 --select data that we are going to using
 
+-- SELECT col_1, Col_2, col_N FROM table << more cleaner
+
 --case-sensitive, 'indonesia' or 'Indonesia' have different results
 SELECT * FROM public.natdisasterdeath 
 	WHERE entity = 'Indonesia';
