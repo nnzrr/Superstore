@@ -64,7 +64,7 @@ SELECT 	gdp.entity AS entity,
 	CAST(gdp.total_damages_pct_gdp_landslide AS numeric(5,4)) AS gdpDamagedPercentage
 		FROM public.natdisasterdeath dea
 			JOIN public.natdisastergdp gdp
-			ON dea.code = gdp.code and dea.year = gdp.year
+			ON dea.code = gdp.code and
 				WHERE gdp.code = 'IDN' AND gdp.year = 2000
 				GROUP BY gdp.entity, gdp.year, gdp.total_damages_pct_gdp_landslide
 					
