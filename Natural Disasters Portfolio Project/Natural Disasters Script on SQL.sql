@@ -26,7 +26,7 @@ SELECT entity,
 		GROUP BY entity, year, code
 		ORDER BY deaths_temperature DESC LIMIT 1
 
---alternatively, using CTE, more cleaner and faster query
+--alternatively, using CTE, more cleaner and faster
 with maxi AS (SELECT entity, year, code, SUM(deaths_temperature) AS highest_deaths_temperature
 		FROM natdisasterdeath 
 	      	WHERE length(code) = 3 
