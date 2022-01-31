@@ -14,6 +14,8 @@ SELECT * FROM public.natdisasterdeath
 SELECT * FROM public.natdisasterdeath 
 	WHERE code = 'IDN';
 
+-----------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------
 --looking at countries highest death by temperature
 SELECT entity, 
 	year, 
@@ -23,7 +25,18 @@ SELECT entity,
 		WHERE LENGTH(code) = 3
 		GROUP BY entity, year, code
 		ORDER BY deaths_temperature DESC LIMIT 1
-		
+
+--alternatively, using CTE, more cleaner and faster query
+with maxi AS (SELECT entity, year, code, SUM(deaths_temperature) AS highest_deaths_temperature
+		FROM natdisasterdeath 
+	      	WHERE length(code) = 3 
+	      	GROUP BY entity, year, code)
+SELECT entity, year, code, highest_deaths_temperature FROM maxi
+	WHERE highest_deaths_temperature = (SELECT max(highest_deaths_temperature) FROM maxi)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+
 --looking at which year had highest death by earthquake in japan
 SELECT entity, 
 	year, 
