@@ -1,4 +1,4 @@
-| propertyaddress                     | address                            |       city       |
+| propertyaddress                     | address                            | city             |
 | ----------------------------------- |:----------------------------------:| ----------------:|
 | 515  BASSWOOD AVE, NASHVILLE        | 515  BASSWOOD AVE                  | NASHVILLE        |
 | 515  BASSWOOD AVE, NASHVILLE        | 515  BASSWOOD AVE                  | NASHVILLE        |
