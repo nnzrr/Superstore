@@ -1,5 +1,12 @@
-| propertyaddress| address       | city  |
-| ---------------|:-------------:| -----:|
-| col 3 is       | right-aligned | $1600 |
-| col 2 is       | centered      |   $12 |
-| zebra stripes  | are neat      |    $1 |
+| propertyaddress                     | address       | city  |
+| ----------------------------------- |:-------------:| -----:|
+| 515  BASSWOOD AVE                   | right-aligned | $1600 |
+| 515  BASSWOOD AVE                   | centered      |   $12 |
+| 515  BASSWOOD AVE                   | are neat      |    $1 |
+| 515  BASSWOOD AVE                   |
+| 515  BASSWOOD AVE                   |
+| 515  BASSWOOD AVE                   |
+| 515  BASSWOOD AVE                   |
+| 1808  FOX CHASE DR, GOODLETTSVILLE  |
+| 1832  FOX CHASE DR, GOODLETTSVILLE  |
+| 1864 FOX CHASE  DR, GOODLETTSVILLE  |
