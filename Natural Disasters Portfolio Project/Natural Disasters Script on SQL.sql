@@ -57,13 +57,13 @@ SELECT entity,
 
 --looking at Total death, Deaths by drought, and deaths by drought percentage to total death in Indonesia
 SELECT entity, 
-	GREATEST(0, SUM( deaths_temperature + deaths_wildfire + deaths_storm +
+	SUM( deaths_temperature + deaths_wildfire + deaths_storm +
     	deaths_landslide + deaths_mass_movement + deaths_volcanic +
- 	deaths_earthquake + deaths_flood + deaths_drought )) AS total_death,
+ 	deaths_earthquake + deaths_flood + deaths_drought ) AS total_death,
 (SELECT SUM(deaths_drought) FROM natdisasterdeath WHERE code = 'IDN') as deaths_drought,
-(SELECT (SUM(deaths_drought)/GREATEST(0, SUM( deaths_temperature + deaths_wildfire + deaths_storm +
+SELECT SUM(deaths_drought)/SUM( deaths_temperature + deaths_wildfire + deaths_storm +
     	deaths_landslide + deaths_mass_movement + deaths_volcanic +
- 	deaths_earthquake + deaths_flood + deaths_drought ))) * 100 AS percentage)
+ 	deaths_earthquake + deaths_flood + deaths_drought ) * 100 AS percentage
 		FROM public.natdisasterdeath 
 			WHERE code = 'IDN' 
 			GROUP BY entity
