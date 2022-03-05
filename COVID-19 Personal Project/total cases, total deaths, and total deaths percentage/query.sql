@@ -7,3 +7,7 @@ SELECT 	aa.location,
 			JOIN covid19death bb
 			ON aa.caseid = bb.caseid
 				GROUP BY aa.location, aa.date, aa.total_cases, bb.total_deaths
+				
+				select location,
+		MAX(total_cases) AS apexoftotalcases,
+		max(total_death) AS apexoftotaldeath
