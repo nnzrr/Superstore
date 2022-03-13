@@ -1,13 +1,14 @@
-select DISTINCT 	aa.location,
-MAX(aa.date) AS DATE,
-		MAX(aa.new_cases) AS apexoftotalcases,
-		MAX(bb.new_deaths) AS apexoftotaldeath
+select	aa.location,
+		aa.iso_code,
+		MAX(aa.date) AS date,
+		MAX(aa.new_cases) AS apexofnewcases,
+		MAX(bb.new_deaths) AS apexofnewdeath
 			FROM covid19case aa
 			JOIN covid19death bb
-				ON aa.caseid = bb.caseid
-				WHERE aa.date = (SELECT DATE_PART('year',DATE '2021-01-01'))
-				GROUP BY aa.location
-        
+			ON aa.caseid = bb.caseid
+				WHERE EXTRACT(YEAR FROM aa.DATE) = 2021 
+				AND aa.iso_code NOT LIKE 'OWID%' 
+					GROUP BY aa.location, aa.iso_code
         
         
         
